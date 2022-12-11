@@ -1,0 +1,66 @@
+/*Cores Padrão do site*/
+:root{
+    --fundo-padrao: rgba(229, 208, 133, 1);
+    --fundo-padrao-button: rgba(135, 134, 131, 0.7);
+    --fundo-padrao-button-hover: rgb(255, 255, 255);
+}
+/*Ícones*/
+.icone-logo{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 60px;
+}
+/*Menus e navs e headers*/
+.menu_susp{
+background-color: var(--fundo-padrao);
+}
+.menu_superior{
+    background-color: var(--fundo-padrao);
+}
+
+/*Butões*/
+.meubutton:hover{
+    border: 0;
+}
+.meubutao{/*Buttonfromform*/
+    background-color: var(--fundo-padrao);
+    border-radius: 5px;
+    color: black;
+    border: 0;
+    width: 128px;
+}
+.meubutao:hover{
+    background-color:var(--fundo-padrao-button-hover);
+}
+/*customização da tag <a>*/
+.meubutton:active{
+    border: 0;
+}
+.meu_linkado:active{
+    background-color: white;
+    color: black;
+}
+.carrinused_a{
+    color: black;
+}
+
+/*Rodapé, toda parte inferior*/
+.rod_footer{
+background-color:  var(--fundo-padrao);
+}
+.all-svg-footer svg{
+    margin: 10px;
+}
+.img-icone-navbar{
+    width: 80px;
+    border-radius: 60px;
+}
+
+.formm{
+   background-color: var(--fundo-padrao);
+   padding: 10px;
+   margin-top: 100px;
+
+}
