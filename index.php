@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php 
+<?php
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL); ?>
@@ -36,7 +36,7 @@ error_reporting(E_ALL); ?>
               <li><a class="meu_linkado dropdown-item" href="#">Brincos</a></li>
             </ul>
           </div>
-          <div class="dropdown">
+          <!-- <div class="dropdown">
             <button class="meubutton btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Marcas
             </button>
@@ -45,7 +45,7 @@ error_reporting(E_ALL); ?>
               <li><a class="meu_linkado dropdown-item" href="#">Vivara60anos</a></li>
               <li><a class="meu_linkado dropdown-item" href="#">TiffanyCO</a></li>
             </ul>
-          </div>
+          </div> -->
         </div>
 
         <div class="dropdown">
@@ -59,16 +59,16 @@ error_reporting(E_ALL); ?>
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
             </svg>
-            Perfil
+            Opções
           </button>
           <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="meu_linkado dropdown-item" href="#">Seu Perfil</a></li>
-            <li><a class="meu_linkado dropdown-item" href="cadastrar-produto.php">Cadastrar Item</a></li>
-            <li><a class="meu_linkado dropdown-item" href="../index.php">Relatório de Vendas</a></li>
-            <li><a class="meu_linkado dropdown-item" href="login.html">Sair</a></li>
+            <li><a class="meu_linkado dropdown-item" href="view/listar-usuarios.php">Perfis Cadastrados</a></li>
+            <li><a class="meu_linkado dropdown-item" href="view/cadastrar-produto.php">Cadastrar Produto</a></li>
+            <li><a class="meu_linkado dropdown-item" href="view/relatorio-vendas.php">Relatório de Vendas</a></li>
+            <!-- <li><a class="meu_linkado dropdown-item" href="login.html">Sair</a></li> -->
           </ul>
         </div>
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <a href="telacarrinho.html" class="carrinused_a dropdown-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 20">
               <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
@@ -76,7 +76,7 @@ error_reporting(E_ALL); ?>
             Carrinho
           </a>
           </button>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -84,39 +84,38 @@ error_reporting(E_ALL); ?>
 
 
   <div class="overflow-hidden text-center p-4" style="background-color: rgba(229, 208, 133, 1);">
-    <!-- <button class="btn">Estou aqui</button> -->
-
     <div class="row gx-5 gy-5 pb-5 row-cols-1 row-cols-lg-4">
-      <div class="col">
-        <div class="p-2 border bg-light">
-          <?php
-          require_once 'classes/autoload.inc.php';
 
-          $produto = new ProdutoDAO();
-          $lista = $produto->listar();
+      <?php
+      require_once 'classes/autoload.inc.php';
 
-          foreach ($lista as $key => $value) {
-          ?>
+      $produto = new ProdutoDAO();
+      $lista = $produto->listar();
+
+      foreach ($lista as $key => $value) {
+
+      ?>
+        <div class="col">
+          <div class="p-2 border bg-light">
+            <!-- <button class="btn">a <?php var_dump($value); ?></button> -->
 
             <!--Card-->
             <div class="card img-fluid">
-              <img src="" class="card-img-top" alt="...">
+              <img src="view/IMAGENS/icon.png" alt="...">
               <div class="card-body">
-                <h5 class="card-title" id="nome"><? echo $value['nome']; ?></h5>
-                <h1 class="card-title" id="descricao"><? echo $value['descricao']; ?></h1>
-                <p class="card-text" id="valor"> R$ <? echo $value['preco']; ?></p>
+                <h5 class="card-title" id="nome"><?php echo $value["nome"]; ?></h5>
+                <h1 class="card-title" id="descricao"><?php echo $value['descricao']; ?></h1>
+                <p class="card-text" id="valor"> R$ <?php echo $value['preco']; ?></p>
 
-                <a href="view/telaItem.php" class="btn btn-primary mb-2">Comprar</a>
-                <a class="btn btn-primary">Adicionar ao carrinho</a>
+                <a href="view/info-produto.php?id=<?php echo $value['id']; ?>" class="btn btn-primary mb-2">Mais informações</a>
+                <!-- <a class="btn btn-primary">Adicionar ao carrinho</a> -->
               </div>
             </div>
-
-          <?php
-          }
-          ?>
-
+          </div>
         </div>
-      </div>
+      <?php
+      }
+      ?>
     </div>
 
 

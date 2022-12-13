@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL); ?>
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastrar Acessório - Jewelry Store</title>
+  <title>Relatório de Vendas</title>
   <link rel="shortcut icon" href="IMAGENS/icon.ico" type="image/x-icon">
   <!--settings from boostrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!--settings local-->
   <link rel="stylesheet" href="CSS/stylefromlogin.css">
-  <!-- <link rel="stylesheet" href="CSS/stylefromHome.css"> -->
+  <!-- <link rel="stylesheet" href="../CSS/stylefromHome.css"> -->
 </head>
 
 <body>
   <!--Cabeçalho-->
-  <header class="menu_superior sticky-top text-white mb-4 p-2">
+  <header class="menu_superior sticky-top text-white p-2 mb-4">
     <div class="container">
       <div class="menu_inferior d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
         <img src="IMAGENS/icon.png" width="40" height="40" class="img-fluid rounded-circle" alt="">
         <div class="nav col-12 col-lg-auto me-lg-auto mx-3 mb-2 justify-content-center mb-md-0">
           <div class="dropdown">
@@ -48,6 +45,11 @@ error_reporting(E_ALL); ?>
         </div>
 
         <div class="dropdown">
+          <button class="meubutton btn" hidden type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Anuncie seu produto aqui!
+          </button>
+        </div>
+        <div class="dropdown">
           <a href="../index.php" class="carrinused_a dropdown-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
@@ -57,7 +59,7 @@ error_reporting(E_ALL); ?>
           </button>
         </div>
         <div class="dropdown">
-          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="meubutton btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 20">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
@@ -66,18 +68,17 @@ error_reporting(E_ALL); ?>
           </button>
           <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="meu_linkado dropdown-item" href="#">Seu Perfil</a></li>
+            <li><a class="meu_linkado dropdown-item" href="cadastrar-produto.php">Cadastrar Item</a></li>
             <li><a class="meu_linkado dropdown-item" href="login.html">Sair</a></li>
           </ul>
         </div>
-
-        <div class="dropdown" hidden>
-          <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <a href="" class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 20">
-                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-              </svg>
-              Carrinho
-            </a>
+        <div class="dropdown">
+          <a href="telacarrinho.html" class="carrinused_a dropdown-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 20">
+              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+            </svg>
+            Carrinho
+          </a>
           </button>
         </div>
 
@@ -85,75 +86,36 @@ error_reporting(E_ALL); ?>
     </div>
   </header>
 
-  <div class="overflow-hidden p-3" style="background-color: rgb(179, 181, 181);">
+  <div class="overflow-hidden p-3" style="background-color: rgba(229, 208, 133, 1);">
     <div class="d-flex p-2 justify-content-center">
-      <h5>Cadastrar Item</h5>
+      <h5>Relatório de Vendas</h5>
     </div>
-    Seu Perfil
+    <?php
+    require_once '../classes/autoload.inc.php';
 
-    <!-- FORMULÁRIO -->
-    <form class="row g-2 p-4" style="background-color: rgba(229, 208, 133, 1);" method="post" action="../database/db-produto-inserir.php">
+    $venda = new VendaDAO();
+    $lista = $venda->listar();
 
-      <div class="col-md-3">
-        <label for="validationDefault01" class="form-label">Nome do Item*:</label>
-        <input type="text" name="nome" class="form-control" id="validationDefault01" required>
+    foreach ($lista as $key => $value) {
+
+    ?>
+      <div class="row g-2 p-2 m-3" style="background-color: rgb(255, 255, 255);">
+        <!-- <div class="col-md-1">
+          <label for="validationDefault01" class="form-label"> ?></label>
+        </div> -->
+        <p class="card-text" id="usuario">Comprador: <?php echo $value["usuario_nome"]; ?></p>
+        <p class="card-text" id="descri">Data da Venda: <?php echo $value["dataVenda"]; ?> </p>
+        <p class="card-text" id="valor">Valor Total: <?php echo $value["valorTotal"]; ?></p>
+        <p class="card-text" id="peso">Forma de Pagamento: <?php echo $value["formaPagamento"];  ?></p>
+        <a href="#?id=<?php echo $value['id']; ?>" class="btn btn-primary mb-2">Produto(s)</a>
+
+        
       </div>
-
-      <div class="col-md-9 ">
-        <label for="validationDefault02" class="form-label">Descrição do Item*</label>
-        <input type="text" name="descricao" class="form-control" id="validationDefault02" required>
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefaultUsername" class="form-label" pattern="[0-9]">Valor*</label>
-        <input type="text" name="preco" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" ?>" required>
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault03" class="form-label">Peso</label>
-        <input type="text" name="peso" class="form-control" pattern="[0-9]" id="validationDefault03" >
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Tamanho</label>
-        <input type="text" name="tamanho" class="form-control" pattern="[0-9]" id="validationDefault05" >
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Largura</label>
-        <input type="text" name="largura" class="form-control" pattern="[0-9]" id="validationDefault05" >
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Espessura</label>
-        <input type="text" name="espessura" class="form-control" pattern="[0-9]" id="validationDefault05" >
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Medida</label>
-        <input type="text" name="medida" class="form-control" pattern="[0-9]" id="validationDefault05" >
-      </div>
-
-      <div class="col-md-3">
-        <label for="validationDefault04" class="form-label">Categoria*</label>
-        <select class="form-select" name="tipoProduto" id="validationDefault04" required>
-          <option>Brinco</option>
-          <option>Pulseira</option>
-          <option>Anel</option>
-        </select>
-      </div>
-
-      <div class="col-md-3">
-        <label for="validationDefault05" class="form-label">Imagem do Item</label>
-        <input type="file" name="pathImagem" class="form-control" id="validationDefault05" value="<?php echo $prop['pathImagem']; ?>">
-      </div>
-
-      <div class="col-12 d-flex justify-content-center mt-4">
-        <button class="btn btn-primary" name="enviar" type="submit" value="Cadastrar">Cadastrar</button>
-      </div>
-
-    </form>
+    <?php
+    }
+    ?>
   </div>
+
 
   <!--Rodapé-->
   <footer class="rod_footer text-lg-start pt-1 mt-5">
@@ -204,7 +166,6 @@ error_reporting(E_ALL); ?>
         </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
 
 </body>
 

@@ -1,5 +1,5 @@
 <?php
-require_once '../configs/autoload.inc.php';
+require_once '../classes/autoload.inc.php';
 
 ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
@@ -32,5 +32,5 @@ $produto -> setPathImagem($pathImagem);
 $produto->adicionar();
 
 
-header("Location: www.google.com");
+header("Location: ../index.php");
 ?>
