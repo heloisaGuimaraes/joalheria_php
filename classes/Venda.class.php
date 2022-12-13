@@ -7,12 +7,6 @@ class Venda{
     private $usuarioId;
     //data, valorTotal, formaPagamento, usuarioId
     
-    // public function __construct($dataVenda, $valorTotal, $formaPagamento, $usuarioId){
-    //     $this->dataVenda = $dataVenda;
-    //     $this->valorTotal = $valorTotal;
-    //     $this->formaPagamento = $formaPagamento;
-    //     $this->usuarioId = $usuarioId;
-    // }
     public function getId(){
         return $this->id;
     }

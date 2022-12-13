@@ -13,18 +13,6 @@ class Produto{
     private $pathImagem;
     //nome, descricao, preco, peso, tamanho, largura, espessura, medida, tipoProduto
 
-    // public function __construct($nome, $descricao, $preco, $peso, $tamanho, $largura, $espessura, $medida, $tipoProduto, $pathImagem){
-    //     $this->nome = $nome;
-    //     $this->descricao = $descricao;
-    //     $this->preco = $preco;
-    //     $this->peso = $peso;
-    //     $this->tamanho = $tamanho;
-    //     $this->largura = $largura;
-    //     $this->espessura = $espessura;
-    //     $this->medida = $medida;
-    //     $this->tipoProduto = $tipoProduto;
-    //     $this->pathImagem = $pathImagem;
-    // }
 
     public function getId(){
         return $this->id;

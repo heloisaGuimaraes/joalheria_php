@@ -10,16 +10,6 @@ class Usuario{
     private $endereco;
     //nome, email, senha, cpf, dataNascimento, telefone, endereco
 
-    // public function __construct($nome, $email, $senha, $cpf, $dataNascimento, $telefone, $endereco){
-    //     $this->nome = $nome;
-    //     $this->email = $email;
-    //     $this->senha = $senha;
-    //     $this->cpf = $cpf;
-    //     $this->dataNascimento = $dataNascimento;
-    //     $this->telefone = $telefone;
-    //     $this->endereco = $endereco;
-    // }
-
     public function getId(){
         return $this->id;
     }

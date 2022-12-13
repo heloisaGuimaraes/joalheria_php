@@ -1,5 +1,5 @@
 <?php
-require_once '../configs/Conexao.class.php';
+require_once 'Conexao.class.php';
 require_once 'Produto.class.php';
 require_once 'IDatabase.php';
 

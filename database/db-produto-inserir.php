@@ -32,5 +32,5 @@ $produto -> setPathImagem($pathImagem);
 $produto->adicionar();
 
 
-header("Location: ../view/index.php");
+header("Location: www.google.com");
 ?>

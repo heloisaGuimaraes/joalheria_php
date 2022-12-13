@@ -8,12 +8,6 @@ class ItemVenda{
     private $vendaId;
     //quantidade, valorTotal, produtoId, vendaId
     
-    // public function __construct($quantidade, $valorTotal, $produtoId, $vendaId){
-    //     $this->quantidade = $quantidade;
-    //     $this->valorTotal = $valorTotal;
-    //     $this->produtoId = $produtoId;
-    //     $this->vendaId = $vendaId;
-    // }
     public function getId(){
         return $this->id;
     }

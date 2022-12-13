@@ -8,113 +8,99 @@
     <link rel="shortcut icon" href="/IMAGENS/icon.ico" type="image/x-icon">
     <!--settings from boostrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!--settings local-->
     <link rel="stylesheet" href="../CSS/stylefromlogin.css">
     <link rel="stylesheet" href="../CSS/stylefromHome.css">
 </head>
 <body>
   <!--Cabeçalho-->
-  <header class="header-customize sticky-top text-white mb-5" style="background-color: aqua;">
+  <header class="menu_superior sticky-top text-white p-2 mb-4">
     <div class="container">
-      <div style="background-color: red;" class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <div class="menu_inferior d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        
         <img src="/IMAGENS/icon.png" width="40" height="40" class="img-fluid rounded-circle" alt="">
         <div class="nav col-12 col-lg-auto me-lg-auto mx-3 mb-2 justify-content-center mb-md-0">
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="meubutton btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Categorias
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Pulseiras</a></li>
-              <li><a class="dropdown-item" href="#">Anéis</a></li>
-              <li><a class="dropdown-item" href="#">Brincos</a></li>
+            <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="meu_linkado dropdown-item" href="#">Pulseiras</a></li>
+              <li><a class="meu_linkado dropdown-item" href="#">Anéis</a></li>
+              <li><a class="meu_linkado dropdown-item" href="#">Brincos</a></li>
             </ul>
           </div>
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="meubutton btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Marcas
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Micheletti-Joias</a></li>
-              <li><a class="dropdown-item" href="#">Vivara60anos</a></li>
-              <li><a class="dropdown-item" href="#">TiffanyCO</a></li>
+            <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="meu_linkado dropdown-item" href="#">Micheletti-Joias</a></li>
+              <li><a class="meu_linkado dropdown-item" href="#">Vivara60anos</a></li>
+              <li><a class="meu_linkado dropdown-item" href="#">TiffanyCO</a></li>
             </ul>
           </div>
         </div>
 
-        <div class="dropdown" hidden>
-          <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="dropdown">
+          <button class="meubutton btn" hidden type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Anuncie seu produto aqui!
           </button>
         </div>
+        <div class="dropdown">          
+          <a href="home.html" class="carrinused_a dropdown-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+            </svg>
+            Home
+          </a> 
+        </button>
+      </div>
         <div class="dropdown">
-          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="meubutton btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 20">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
             </svg>
             Perfil
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Seu Perfil</a></li>
-            <li><a class="dropdown-item" href="login.html">Sair</a></li>
+          <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="meu_linkado dropdown-item" href="#">Seu Perfil</a></li>
+            <li><a class="meu_linkado dropdown-item" href="cadastraritem.html">Cadastrar Item</a></li>
+            <li><a class="meu_linkado dropdown-item" href="../index.php">Relatório de Vendas</a></li>
+            <li><a class="meu_linkado dropdown-item" href="login.html">Sair</a></li>
           </ul>
         </div>
-
-        <div class="dropdown">
-          <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <a href="telacarrinho.html" class="dropdown-item">
+        <div class="dropdown">          
+            <a href="telacarrinho.html" class="carrinused_a dropdown-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 20">
                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
               </svg>
               Carrinho
             </a> 
           </button>
-        </div>
+         </div>
         
       </div>
     </div>
   </header>
   
-  <div class="overflow-hidden p-3" style="background-color: aqua;">
+  <div class="overflow-hidden p-3" style="background-color: rgba(229, 208, 133, 1);">
     <div class="d-flex p-2 justify-content-center">
-      <h5>Cadastro para vendedor</h5>
+      <h5>usuários Cadastrados</h5>
     </div>
-  <form class="row g-2 p-4" style="background-color: brown;">
-    <div class="col-md-5">
+  <div class="row g-2 p-2 m-3" style="background-color: rgb(255, 255, 255);">
+    <div class="col-md-1">
       <label for="validationDefault01" class="form-label">Seu nome*</label>
-      <input type="text" class="form-control" id="validationDefault01" value="" required>
     </div>
-    <div class="col-md-3">
-      <label for="validationDefault02" class="form-label">E-mail*</label>
-      <input type="email" class="form-control" id="validationDefault02" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-    </div>
-    <div class="col-md-4">
-      <label for="validationDefaultUsername" class="form-label">Senha*</label>
-      <div class="input-group">
-        <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="validationDefault03" class="form-label">Contato</label>
-      <input type="tel" class="form-control" id="validationDefault03" required>
-    </div>
-    <div class="col-md-3">
-      <label for="validationDefault05" class="form-label">CNPJ</label>
-      <input type="text" class="form-control" id="validationDefault05" required>
-    </div>
-    <div class="col-12 py-4 d-flex justify-content-center">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-        <label class="form-check-label" for="invalidCheck2">
-          Concordo com todos os termos!!
-        </label>
-      </div>
-    </div>
-    <div class="col-12 d-flex justify-content-center">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-  </form>
+    <p class="card-text" id="descri">Usuário: <? echo $listar->nome?> </p>
+    <p class="card-text" id="valor" >Email: <? echo $listar->email ?></p>
+    <p class="card-text" id="peso">Senha: <? echo $listar->senha ?></p>
+    <p class="card-text" id="tam">Data de Nascimento: <? echo $listar->dataNascimento ?></p>
+    <p class="card-text" id="largur" >telefone: <? echo $listar->telefone ?></p>
+    <p class="card-text" id="espessur">Seu endereço: <? echo $listar->endereco ?></p>
+    <p class="card-text" id="medida">CPF: <? echo $listar->cpf ?></p>
+  </div>
   </div>
   <!--Rodapé-->
 <footer class="rod_footer text-lg-start pt-1 mt-5">
@@ -164,6 +150,7 @@
 
     </div>
 </footer>
-    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
 </html>
