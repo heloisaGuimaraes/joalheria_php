@@ -86,57 +86,75 @@ error_reporting(E_ALL); ?>
     </div>
   </header>
 
+  <?php
+  require_once '../classes/autoload.inc.php';
+
+  $id = $_GET['id'] ?? null;
+
+  if ($id) {
+    $dao = new ProdutoDAO();
+    $prop = $dao->buscar($id);
+  }
+
+  ?>
+
   <div class="overflow-hidden p-3" style="background-color: rgb(179, 181, 181);">
     <div class="d-flex p-2 justify-content-center">
       <h5>Cadastrar Produto</h5>
     </div>
 
     <!-- FORMULÁRIO -->
-    <form class="row g-2 p-4" style="background-color: rgba(229, 208, 133, 1);" method="post" action="../database/db-produto-inserir.php">
+    <form class="row g-2 p-4" style="background-color: rgba(229, 208, 133, 1);" method="post" action="../database/<?php echo $id != null ? 'db-produto-alterar' : 'db-produto-inserir' ?>.php">
+      <?php
+      if ($id) {
+        echo '<input type="hidden" name="id" value="' . $id . '">';
+      }
+      ?>
 
       <div class="col-md-3">
         <label for="validationDefault01" class="form-label">Nome do Item*:</label>
-        <input type="text" name="nome" class="form-control" id="validationDefault01" required>
+        <input type="text" name="nome" class="form-control" id="validationDefault01" value="<?php echo $prop['nome'] ?? '' ?>" required>
       </div>
 
       <div class="col-md-9 ">
         <label for="validationDefault02" class="form-label">Descrição*:</label>
-        <input type="text" name="descricao" class="form-control" id="validationDefault02" required>
+        <input type="text" name="descricao" class="form-control" id="validationDefault02" value="<?php echo $prop['descricao'] ?? '' ?>" required>
       </div>
 
       <div class="col-md-1">
         <label for="validationDefaultUsername" class="form-label" pattern="[0-9]">Valor*:</label>
-        <input type="text" name="preco" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" ?>" required>
+        <input type="text" name="preco" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" value="<?php echo $prop['preco'] ?? '' ?>" required>
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault03" class="form-label">Peso:</label>
-        <input type="text" name="peso" class="form-control" pattern="[0-9]" id="validationDefault03" >
+        <input type="text" name="peso" class="form-control" pattern="[0-9]" id="validationDefault03" value="<?php echo $prop['peso'] ?? '-' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Tamanho:</label>
-        <input type="text" name="tamanho" class="form-control" pattern="[0-9]" id="validationDefault05" >
+        <input type="text" name="tamanho" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['tamanho'] ?? '-' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Largura:</label>
-        <input type="text" name="largura" class="form-control" pattern="[0-9]" id="validationDefault05" >
+        <input type="text" name="largura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['largura'] ?? '-' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Espessura:</label>
-        <input type="text" name="espessura" class="form-control" pattern="[0-9]" id="validationDefault05" >
+        <input type="text" name="espessura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['espessura'] ?? '-' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Medida:</label>
-        <input type="text" name="medida" class="form-control" pattern="[0-9]" id="validationDefault05" >
+        <input type="text" name="medida" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['medida'] ?? '-' ?>">
       </div>
 
       <div class="col-md-3">
         <label for="validationDefault04" class="form-label">Categoria*:</label>
         <select class="form-select" name="tipoProduto" id="validationDefault04" required>
+          <option value="<?php echo $prop['tipoProduto'] ?? '-' ?>"><?php echo $prop['tipoProduto'] ?? '-' ?></option>
           <option>Brinco</option>
           <option>Pulseira</option>
           <option>Anel</option>
@@ -144,12 +162,12 @@ error_reporting(E_ALL); ?>
       </div>
 
       <div class="col-md-3">
-        <label for="validationDefault05" class="form-label">Imagem do Item</label>
-        <input type="file" name="pathImagem" class="form-control" id="validationDefault05" >
+        <label for="validationDefault05" class="form-label">Imagem do Item:</label>
+        <input type="file" name="pathImagem" class="form-control" id="validationDefault05" value="<?php echo $prop['pathImagem'] ?? '' ?>">
       </div>
 
       <div class="col-12 d-flex justify-content-center mt-4">
-        <button class="btn btn-primary" name="enviar" type="submit" value="Cadastrar">Cadastrar</button>
+        <button class="btn btn-primary" name="enviar" type="submit" value="Cadastrar"><?php echo ($id != null) ? 'Atualizar' : 'Cadastrar'; ?></button>
       </div>
 
     </form>

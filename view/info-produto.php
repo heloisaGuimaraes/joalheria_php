@@ -125,7 +125,7 @@ error_reporting(E_ALL); ?>
               <p class="card-text" id="espessur">Espessura: <?php echo $prop['espessura']; ?></p>
               <p class="card-text" id="medida">Medida: <?php echo $prop['medida']; ?></p>
 
-              <a href="#?id=<?php echo $prop['id']; ?>" class="btn btn-primary">Editar </a>
+              <a href="cadastrar-produto.php?id=<?php echo $prop['id']; ?>" class="btn btn-primary">Editar </a>
               <a href="#?id=<?php echo $prop['id']; ?>" class="btn btn-primary">Excluir </a>
 
               <!-- <button type="submit" class="btn btn-primary">Excluir</button> -->

@@ -29,5 +29,5 @@ $produto -> setPathImagem($pathImagem);
 
 $produto->alterar($id);
 
-// header("Location: ../view/listar-proprietarios.php");
+header("Location: ../index.php");
 ?>
