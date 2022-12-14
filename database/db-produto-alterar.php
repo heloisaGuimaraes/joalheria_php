@@ -1,5 +1,5 @@
 <?php
-require_once '../configs/autoload.inc.php';
+require_once '../classes/autoload.inc.php';
 
 $id = $_POST['id'];
 $nome = $_POST['nome'];

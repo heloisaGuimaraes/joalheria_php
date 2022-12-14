@@ -95,10 +95,10 @@ error_reporting(E_ALL); ?>
           <div class="p-2 border bg-light">
             <!--Card-->
             <div class="card img-fluid">
-              <img src='<?php echo $value["pathImagem"]; ?>' alt='...'>
+              <img src='imagens_joias/<?php echo $value["pathImagem"]; ?>' alt='...'>
               <div class="card-body">
-                <h5 class="card-title" id="nome"><?php echo $value["nome"]; ?></h5>
-                <h1 class="card-title" id="descricao"><?php echo $value['descricao']; ?></h1>
+                <h5 class="card-title" id="nome"><?php echo mb_strimwidth($value["nome"], 0, 20, "..."); ?></h5>
+                <p class="card-title" id="descricao"><?php echo mb_strimwidth($value["nome"], 0, 20, "..."); ?></p>
                 <p class="card-text" id="valor"> R$ <?php echo $value['preco']; ?></p>
                 
                 <a href="view/info-produto.php?id=<?php echo $value['id']; ?>" class="btn btn-primary mb-2">Mais informações</a>

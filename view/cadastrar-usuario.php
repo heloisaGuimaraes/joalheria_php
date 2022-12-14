@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL); ?>
+<!-- var_dump($value); -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sewelry Store</title>
+    <title>Cadastrar Cliente</title>
      <link rel="shortcut icon" href="IMAGENS/icon.ico" type="image/x-icon">
    <!--settings from boostrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -78,43 +83,57 @@
       </div>
     </div>
   </header>
-  <!--Inicio Form-->
-<div class="formm text-center col-md-4 offset-md-4 py-5 px-5">
-    <h4>Login</h4>
-    <img class="icone-logo" src="IMAGENS/icon.png" alt="">
 
-    <form name="date-login" id="envi" method="post" action="../database/db-usuario-inserir.php">  <!--Formulário-->
-        <div class="mb-3">
-          <label for="userEmail" class="form-label">Seu nome*</label>
-          <input type="text" name="nome" value="<?php echo $prop['nome']; ?>" class="form-control" aria-describedby="emailHelp" required>
+  <!--Inicio Form-->
+  <div class="container">
+    <div class="container p-5 " style="background-color: rgba(229, 208, 133, 1);">  
+      <h4 class="text-center">Cadastrar Cliente</h4>
+      <!-- <img class="rounded mx-auto d-block icone-logo" src="IMAGENS/icon.png" alt=""> -->
+  
+      <form class="row g-4 row-cols-lg-1" name="date-login" id="envi" method="post" action="../database/db-usuario-inserir.php">
+      <div class="row row-cols-lg-3 g-4">
+  
+        <div class="col-auto">
+          <label for="nomeuser" class="form-label">Nome Completo*:</label>
+          <input type="text" class="form-control" id="nomeuser" required name="nome" value="">
         </div>
-        <div class="mb-3">
-          <label for="userEmail" class="form-label">E-mail*</label>
-          <input type="email" name="email" value="<?php echo $prop['email']; ?>" class="form-control" id="userEmail" aria-describedby="emailHelp" required>
+
+        <div class="col-auto">
+          <label for="teleuser" class="form-label" >Telefone*:</label>
+            <input type="tel" class="form-control" id="teleuser" required aria-describedby="inputGroupPrepend2" name="telefone" value="" >
         </div>
-        <div class="mb-3">
-          <label for="userSenha" class="form-label">CPF*</label>
-          <input type="text" name="cpf" value="<?php echo $prop['cpf']; ?>" class="form-control" required>
+
+        <div class="col-auto">
+          <label for="cpfuser" class="form-label">CPF*</label>
+          <input type="text" class="form-control" id="cpfuser" required name="cpf" value="">
         </div>
-        <div class="mb-3">
-          <label for="userSenha" class="form-label">Data Nascimento*</label>
-          <input type="text" name="dataNascimento" value="<?php echo $prop['dataNascimento']; ?>" class="form-control" required>
+
+        <div class="col-auto">
+          <label for="nascidata" class="form-label">Data de Nascimento*</label>
+          <input type="date" class="form-control" id="nascidata" max="2015-12-30" required name="dataNascimento" value="" >
         </div>
-        <div class="mb-3">
-          <label for="userSenha" class="form-label">Telefone*</label>
-          <input type="tel" name="telefone" value="<?php echo $prop['telefone']; ?>" class="form-control" required>
+
+        <div class="col-auto">
+          <label for="endere" class="form-label">Endereço*</label>
+          <input type="text" class="form-control" id="endere"  name="endereco" required value="">
         </div>
-        <div class="mb-3">
-          <label for="userSenha" class="form-label">Endereço*</label>
-          <input type="text" name="endereco" value="<?php echo $prop['endereco']; ?>" class="form-control" required>
+
+        <div class="col-auto">
+          <label for="emailuser" class="form-label" >E-mail*</label>
+          <input type="email" class="form-control" id="emailuser" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required name="email" value="">
         </div>
-        <div class="mb-3">
-          <label for="userSenha" class="form-label">Senha*</label>
-          <input type="password" name="senha" value="<?php echo $prop['senha']; ?>" class="form-control" required>
+
+        <div class="col-auto col-md-6 offset-md-4">
+          <label for="senhauser" class="form-label">Senha*</label>
+          <input type="password"  class="form-control " id="senhauser" required pattern="[a-z]+[0-9]+" maxlength="6" name="senha" value=""  >
         </div>
-        <button type="submit" class="bnt meubutao">Entrar</button>
+      </div>
+      
+      <div class="col-12 text-center">
+      <button class="btn meubotao_selecione" type="submit">Entrar</button>
+    </div>
     </form>
-</div>
+  </div>
 
 <!--Rodapé-->
 <footer class="rod_footer text-lg-start pt-1 mt-5">

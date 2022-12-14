@@ -104,7 +104,7 @@ error_reporting(E_ALL); ?>
         <div class="p-2 border bg-light d-flex justify-content-center">
           <!--Card-->
           <div class="card img-fluid " style="width: 24rem;">
-            <img src='..\<?php echo $prop["pathImagem"]; ?>' class="card-img-top" alt='...'>
+            <img src='..\imagens_joias/<?php echo $prop["pathImagem"]; ?>' class="card-img-top" alt='...'>
 
           </div>
         </div>

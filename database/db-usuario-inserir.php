@@ -1,13 +1,21 @@
 <?php
-require_once '../configs/autoload.inc.php';
+require_once '../classes/autoload.inc.php';
+
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 $cpf = $_POST['cpf'];
 
-$nascimento = explode("/", $_POST['dataNascimento']);
-$dataNascimento = $nascimento[2] ."-". $nascimento[1] ."-". $nascimento[0];
+// $nascimento = explode("/", $_POST['dataNascimento']);
+// $dataNascimento = $nascimento[2] ."-". $nascimento[1] ."-". $nascimento[0];
+$dataNascimento = $_POST['dataNascimento'];
+echo $dataNascimento;
 
 $telefone= $_POST['telefone'];
 $endereco= $_POST['endereco'];
@@ -26,5 +34,5 @@ $usuario->setEndereco($endereco);
 $usuario->adicionar();
 
 
-// header("Location: ../view/listar-proprietarios.php");
+header("Location: ../view/listar-usuarios.php");
 ?>

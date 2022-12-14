@@ -1,6 +1,5 @@
 <?php
-require_once '../configs/autoload.inc.php';
-
+require_once '../classes/autoload.inc.php';
 
 $quantiadade = $_POST['quantidade'];
 $valorTotal = $_POST['valorTotal'];
