@@ -1,6 +1,10 @@
 <?php
 require_once '../classes/autoload.inc.php';
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 $id = $_POST['id'];
 $nome = $_POST['nome'];
 $descricao = $_POST['descricao'];
@@ -15,6 +19,8 @@ $pathImagem = $_POST['pathImagem'];
 
 
 $produto = new ProdutoDAO();
+$temp_prod = $produto->buscar($id);
+
 $produto -> setId($id);
 $produto -> setNome($nome);
 $produto -> setDescricao($descricao);

@@ -24,7 +24,7 @@ background-color: var(--fundo-padrao);
 .meubutton:hover{
     border: 0;
 }
-.meubutao{/*Buttonfromform*/
+.meubotao{/*Buttonfromform*/
     background-color: var(--fundo-padrao);
     border-radius: 5px;
     color: black;
@@ -49,7 +49,16 @@ background-color: var(--fundo-padrao);
 .meubotao_selecione:active{
     background-color: var(--fundo-padrao-button);
 }
-
+.meubotao_excluir{
+    background-color: red;
+    border-color: black;
+    border-radius: 10px;
+    color: black;
+}
+#meubotao_excluir{
+    background-color: red;
+    color: white;
+}
 /*customização da tag <a>*/
 .meubutton:active{
     border: 0;

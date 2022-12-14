@@ -105,7 +105,7 @@
             <p class="card-text" id="valor">Valor Total: <?php echo $value["valorTotal"]; ?></p>
             <p class="card-text" id="peso">Forma de Pagamento: <?php echo $value["formaPagamento"]; ?>
             </p>
-            <a href="info-produto.php?id=<?php echo $value['id']; ?>" class="btn btn-primary mb-2">Produto(s)</a>
+            <a href="listar-itens-venda.php?id=<?php echo $value['id']; ?>" class="btn meubotao_selecione mb-2">Produto(s)</a>
           </div>
 
         </div>

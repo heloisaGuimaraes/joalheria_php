@@ -9,7 +9,7 @@ error_reporting(E_ALL); ?>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastrar Produto</title>
+  <title>Itens Vendidos</title>
   <link rel="shortcut icon" href="IMAGENS/icon.ico" type="image/x-icon">
   <!--settings from boostrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -86,99 +86,60 @@ error_reporting(E_ALL); ?>
     </div>
   </header>
 
-  <?php
-  require_once '../classes/autoload.inc.php';
 
-  $id = $_GET['id'] ?? null;
-
-  if ($id) {
-    $dao = new ProdutoDAO();
-    $prop = $dao->buscar($id);
-  }
-
-  ?>
-
-  <div class="overflow-hidden p-3" style="background-color: rgb(179, 181, 181);">
+  <div class="container pb-4" style="background-color: rgba(229, 208, 133, 1);">
     <div class="d-flex p-2 justify-content-center">
-      <h5><?php echo $id != null ? 'Atualizar dados' : 'Novo Produto' ?></h5>
+      <h5>Itens Vendidos</h5>
     </div>
 
-    <!-- FORMULÁRIO -->
-    <form class="row g-2 p-4" style="background-color: rgba(229, 208, 133, 1);" method="post" action="../database/<?php echo $id != null ? 'db-produto-alterar' : 'db-produto-inserir' ?>.php">
+    <div class="row row-cols-2 row-cols-lg-2 g-2 g-lg-3">
       <?php
-      if ($id) {
-        echo '<input type="hidden" name="id" value="' . $id . '">';
-        // echo '<input type="hidden" name="pathImagem" value="' . $prop['pathImagem'] . '">';
+      require_once '../classes/autoload.inc.php';
+      $id = $_GET['id'];
+      $itens = new ItemVendaDAO();
+      $lista = $itens->buscar($id);
+      // var_dump($lista);
+
+      foreach ($lista as $key => $value) {
+                
+      ?>
+        <div class="col">
+          <div class="p-3 border bg-light">
+            <div class="row row-cols-1 row-cols-lg-2 g-lg-0" style="background-color: black;">
+              <div class="col">
+                <div class="p-2 border bg-light d-flex justify-content-center">
+                  <!--Card-->
+                  <div class="card img-fluid " style="width: 13rem;">
+                    <img src='..\imagens_joias/<?php echo $value["pathImagem"]; ?>' class="card-img-top" alt='...'>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col">
+                <div class="p-2 border bg-light" >
+                  <!--Card-->
+                  <div class="card" style="height: 13rem;" >
+                    <div class="card-body" >
+                      <h5 class="card-title"><?php echo mb_strimwidth($value["nome"], 0, 15, "..."); ?></h5>
+                      <p class="card-text" id="descri">Descrição:<?php echo mb_strimwidth($value["descricao"], 0, 10, "..."); ?></p>
+                      <p class="card-text" id="valor">Preço: <?php echo $value['preco']; ?></p>
+                      <a href="info-produto.php?id=<?php echo $value['id']; ?>" class="btn btn-primary mb-2">Mais informações</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php
       }
       ?>
-
-      <div class="col-md-3">
-        <label for="validationDefault01" class="form-label">Nome do Item*:</label>
-        <input type="text" name="nome" class="form-control" id="validationDefault01" value="<?php echo $prop['nome'] ?? '' ?>" required>
-      </div>
-
-      <div class="col-md-9 ">
-        <label for="validationDefault02" class="form-label">Descrição*:</label>
-        <input type="text" name="descricao" class="form-control" id="validationDefault02" value="<?php echo $prop['descricao'] ?? '' ?>" required>
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefaultUsername" class="form-label" pattern="[0-9]">Valor*:</label>
-        <input type="text" name="preco" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" value="<?php echo $prop['preco'] ?? '' ?>" required>
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault03" class="form-label">Peso:</label>
-        <input type="text" name="peso" class="form-control" pattern="[0-9]" id="validationDefault03" value="<?php echo $prop['peso'] ?? '-' ?>">
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Tamanho:</label>
-        <input type="text" name="tamanho" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['tamanho'] ?? '-' ?>">
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Largura:</label>
-        <input type="text" name="largura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['largura'] ?? '-' ?>">
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Espessura:</label>
-        <input type="text" name="espessura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['espessura'] ?? '-' ?>">
-      </div>
-
-      <div class="col-md-1">
-        <label for="validationDefault05" class="form-label">Medida:</label>
-        <input type="text" name="medida" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['medida'] ?? '-' ?>">
-      </div>
-
-      <div class="col-md-3">
-        <label for="validationDefault04" class="form-label">Categoria*:</label>
-        <select class="form-select" name="tipoProduto" id="validationDefault04" required>
-          <option value="<?php echo $prop['tipoProduto'] ?? '-' ?>"><?php echo $prop['tipoProduto'] ?? '-' ?></option>
-          <option>Brinco</option>
-          <option>Pulseira</option>
-          <option>Anel</option>
-        </select>
-      </div>
-
-      <div class="col-md-3">
-        <label for="validationDefault05" class="form-label">Imagem do Item:</label>
-        <input type="file" name="pathImagem" class="form-control" id="validationDefault05">
-      </div>
-
-      <?php
-      if ($id) {
-        echo '<input type="hidden" name="pathImagem" value="' . $prop['pathImagem'] . '">';
-      }
-      ?>
-
-      <div class="col-12 d-flex justify-content-center mt-4">
-        <button class="meubotao_selecione btn" style="background-color: green; color: white;" name="enviar" type="submit" value="Cadastrar"><?php echo ($id != null) ? 'Atualizar' : 'Cadastrar'; ?></button>
-      </div>
-
-    </form>
+    </div>
   </div>
+
 
   <!--Rodapé-->
   <footer class="rod_footer text-lg-start pt-1 mt-5">
@@ -229,7 +190,6 @@ error_reporting(E_ALL); ?>
         </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
 
 </body>
 

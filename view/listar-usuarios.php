@@ -106,7 +106,7 @@ error_reporting(E_ALL); ?>
           <div class="p-3 border bg-light">
             <p class="card-text" id="descri">Nome: <?php echo $value["nome"]; ?> </p>
             <p class="card-text" id="medida">CPF: <?php echo $value["cpf"]; ?></p>
-            <a href="info-usuario.php?id=<?php echo $value['id']; ?>" class="btn btn-primary mb-2">Mais informações</a>
+            <a href="info-usuario.php?id=<?php echo $value['id']; ?>" class="btn meubotao_selecione mb-2">Mais informações</a>
           </div>
 
         </div>

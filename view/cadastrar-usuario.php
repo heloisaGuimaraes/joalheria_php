@@ -151,7 +151,7 @@ error_reporting(E_ALL); ?>
       </div>
       
       <div class="col-12 text-center">
-      <button class="btn meubotao_selecione" type="submit"><?php echo ($id != null) ? 'Atualizar' : 'Cadastrar'; ?></button>
+      <button class="meubotao_selecione btn" style="background-color: green; color: white;" type="submit"><?php echo ($id != null) ? 'Atualizar' : 'Cadastrar'; ?></button>
     </div>
     </form>
   </div>
