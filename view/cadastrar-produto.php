@@ -100,7 +100,7 @@ error_reporting(E_ALL); ?>
 
   <div class="overflow-hidden p-3" style="background-color: rgb(179, 181, 181);">
     <div class="d-flex p-2 justify-content-center">
-      <h5>Cadastrar Produto</h5>
+      <h5><?php echo $id != null ? 'Atualizar dados' : 'Novo Produto' ?></h5>
     </div>
 
     <!-- FORMULÁRIO -->
@@ -108,6 +108,7 @@ error_reporting(E_ALL); ?>
       <?php
       if ($id) {
         echo '<input type="hidden" name="id" value="' . $id . '">';
+        // echo '<input type="hidden" name="pathImagem" value="' . $prop['pathImagem'] . '">';
       }
       ?>
 
@@ -163,8 +164,15 @@ error_reporting(E_ALL); ?>
 
       <div class="col-md-3">
         <label for="validationDefault05" class="form-label">Imagem do Item:</label>
-        <input type="file" name="pathImagem" class="form-control" id="validationDefault05" value="<?php echo $prop['pathImagem'] ?? '' ?>">
+        <input type="file" name="pathImagem" class="form-control" id="validationDefault05">
       </div>
+
+      <?php
+      if ($id) {
+
+        echo '<input type="hidden" name="pathImagem" value="' . $prop['pathImagem'] . '">';
+      }
+      ?>
 
       <div class="col-12 d-flex justify-content-center mt-4">
         <button class="btn btn-primary" name="enviar" type="submit" value="Cadastrar"><?php echo ($id != null) ? 'Atualizar' : 'Cadastrar'; ?></button>

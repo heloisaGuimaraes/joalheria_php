@@ -84,53 +84,74 @@ error_reporting(E_ALL); ?>
     </div>
   </header>
 
+  <?php
+  require_once '../classes/autoload.inc.php';
+
+  $id = $_GET['id'] ?? null;
+
+  if ($id) {
+    $dao = new UsuarioDAO();
+    $prop = $dao->buscar($id);
+  }
+
+  ?>
+
+
+
   <!--Inicio Form-->
   <div class="container">
     <div class="container p-5 " style="background-color: rgba(229, 208, 133, 1);">  
-      <h4 class="text-center">Cadastrar Cliente</h4>
-      <!-- <img class="rounded mx-auto d-block icone-logo" src="IMAGENS/icon.png" alt=""> -->
+      <h4 class="text-center"><?php echo $id != null ? 'Atualizar dados' : 'Novo Cliente' ?></h4>
+      
   
-      <form class="row g-4 row-cols-lg-1" name="date-login" id="envi" method="post" action="../database/db-usuario-inserir.php">
+      <form class="row g-4 row-cols-lg-1" name="date-login" id="envi" method="post" action="../database/<?php echo $id != null ? 'db-usuario-alterar' : 'db-usuario-inserir' ?>.php">
+      <?php
+      if ($id) {
+        echo '<input type="hidden" name="id" value="' . $id . '">';
+        
+      }
+      ?>
+
+
       <div class="row row-cols-lg-3 g-4">
-  
         <div class="col-auto">
           <label for="nomeuser" class="form-label">Nome Completo*:</label>
-          <input type="text" class="form-control" id="nomeuser" required name="nome" value="">
+          <input type="text" class="form-control" id="nomeuser" required name="nome" value="<?php echo $prop['nome'] ?? '' ?>">
         </div>
 
         <div class="col-auto">
           <label for="teleuser" class="form-label" >Telefone*:</label>
-            <input type="tel" class="form-control" id="teleuser" required aria-describedby="inputGroupPrepend2" name="telefone" value="" >
+            <input type="tel" class="form-control" id="teleuser" required aria-describedby="inputGroupPrepend2" name="telefone" value="<?php echo $prop['telefone'] ?? '' ?>" >
         </div>
 
         <div class="col-auto">
           <label for="cpfuser" class="form-label">CPF*</label>
-          <input type="text" class="form-control" id="cpfuser" required name="cpf" value="">
+          <input type="text" class="form-control" id="cpfuser" required name="cpf" value="<?php echo $prop['cpf'] ?? '' ?>">
         </div>
 
         <div class="col-auto">
           <label for="nascidata" class="form-label">Data de Nascimento*</label>
-          <input type="date" class="form-control" id="nascidata" max="2015-12-30" required name="dataNascimento" value="" >
+          <input type="date" class="form-control" id="nascidata" max="2015-12-30" required name="dataNascimento" value="<?php echo $prop['dataNascimento'] ?? '' ?>" >
         </div>
 
         <div class="col-auto">
           <label for="endere" class="form-label">Endereço*</label>
-          <input type="text" class="form-control" id="endere"  name="endereco" required value="">
+          <input type="text" class="form-control" id="endere"  name="endereco" required value="<?php echo $prop['endereco'] ?? '' ?>">
         </div>
 
         <div class="col-auto">
           <label for="emailuser" class="form-label" >E-mail*</label>
-          <input type="email" class="form-control" id="emailuser" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required name="email" value="">
+          <input type="email" class="form-control" id="emailuser" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required name="email" value="<?php echo $prop['email'] ?? '' ?>">
         </div>
 
         <div class="col-auto col-md-6 offset-md-4">
           <label for="senhauser" class="form-label">Senha*</label>
-          <input type="password"  class="form-control " id="senhauser" required pattern="[a-z]+[0-9]+" maxlength="6" name="senha" value=""  >
+          <input type="password"  class="form-control " id="senhauser" required pattern="[a-z]+[0-9]+" maxlength="6" name="senha" value="<?php echo $prop['senha'] ?? '' ?>"  >
         </div>
       </div>
       
       <div class="col-12 text-center">
-      <button class="btn meubotao_selecione" type="submit">Entrar</button>
+      <button class="btn meubotao_selecione" type="submit"><?php echo ($id != null) ? 'Atualizar' : 'Cadastrar'; ?></button>
     </div>
     </form>
   </div>

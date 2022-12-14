@@ -29,5 +29,6 @@ $produto -> setPathImagem($pathImagem);
 
 $produto->alterar($id);
 
-header("Location: ../index.php");
+header("Location: ../view/info-produto.php?id=$id");
+
 ?>
