@@ -33,4 +33,3 @@ $produto->adicionar();
 
 
 header("Location: ../index.php");
-?>

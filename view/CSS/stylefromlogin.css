@@ -34,6 +34,22 @@ background-color: var(--fundo-padrao);
 .meubutao:hover{
     background-color:var(--fundo-padrao-button-hover);
 }
+
+.meubotao_selecione{
+    background-color: var(--fundo-padrao);
+    border-color: black;
+    border-radius: 10px;
+    color: black;
+}
+.meubotao_selecione:hover{
+    background-color:  var(--fundo-padrao-button-hover);
+    border-color: black;
+    color: black;
+}
+.meubotao_selecione:active{
+    background-color: var(--fundo-padrao-button);
+}
+
 /*customização da tag <a>*/
 .meubutton:active{
     border: 0;
