@@ -108,7 +108,7 @@ error_reporting(E_ALL); ?>
       <?php
       if ($id) {
         echo '<input type="hidden" name="id" value="' . $id . '">';
-        // echo '<input type="hidden" name="pathImagem" value="' . $prop['pathImagem'] . '">';
+        
       }
       ?>
 
@@ -129,27 +129,27 @@ error_reporting(E_ALL); ?>
 
       <div class="col-md-1">
         <label for="validationDefault03" class="form-label">Peso:</label>
-        <input type="text" name="peso" class="form-control" pattern="[0-9]" id="validationDefault03" value="<?php echo $prop['peso'] ?? '-' ?>">
+        <input type="text" name="peso" class="form-control" pattern="[0-9]" id="validationDefault03" value="<?php echo $prop['peso'] ?? '' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Tamanho:</label>
-        <input type="text" name="tamanho" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['tamanho'] ?? '-' ?>">
+        <input type="text" name="tamanho" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['tamanho'] ?? '' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Largura:</label>
-        <input type="text" name="largura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['largura'] ?? '-' ?>">
+        <input type="text" name="largura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['largura'] ?? '' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Espessura:</label>
-        <input type="text" name="espessura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['espessura'] ?? '-' ?>">
+        <input type="text" name="espessura" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['espessura'] ?? '' ?>">
       </div>
 
       <div class="col-md-1">
         <label for="validationDefault05" class="form-label">Medida:</label>
-        <input type="text" name="medida" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['medida'] ?? '-' ?>">
+        <input type="text" name="medida" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $prop['medida'] ?? '' ?>">
       </div>
 
       <div class="col-md-3">

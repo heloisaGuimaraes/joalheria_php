@@ -126,7 +126,7 @@ error_reporting(E_ALL); ?>
               <p class="card-text" id="medida">Medida: <?php echo $prop['medida']; ?></p>
 
               <a href="cadastrar-produto.php?id=<?php echo $prop['id']; ?>" class="btn meubotao_selecione" style="background-color: green; color: white;">Editar </a>
-              <a href="#?id=<?php echo $prop['id']; ?>" class="meubotao_selecione btn" style="background-color: red; color: white;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir </a>
+              <a href="#?id=<?php echo $prop['id']; ?>" class="meubotao_selecione btn" style="background-color: red; color: white;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</a>
 
             </div>
           </div>
@@ -154,13 +154,16 @@ error_reporting(E_ALL); ?>
           </h4>
         </div>
         <div class="modal-body text-center">
-          Realmente deseja realizar a exclusão?
-        </div>
-        <div class="modal-footer">
-          <a class="btn meubotao_selecione me-5" data-bs-dismiss="modal" style="background-color: green; color: white;">Sim</a>
-          <a href="" class="btn meubotao_selecione" style="background-color: red; color: white;">Não
-          </a>
-        </div>
+                    Deseja realmente realizar a exclusão de <b><?php echo $prop['nome']; ?></b>?
+                </div>
+                <div class="modal-footer">
+                    <form name="excluir-usuario" method="post" action="../database/db-produto-remover.php?id=<?php echo $prop['id']; ?>">
+                        <button class="btn meubotao_selecione me-5" data-bs-dismiss="modal" style="background-color: green; color: white;" type="submit">Sim</button>
+                    </form>
+
+                    <a href="" class="btn meubotao_selecione" style="background-color: red; color: white;">Não
+                    </a>
+                </div>
       </div>
     </div>
   </div>
