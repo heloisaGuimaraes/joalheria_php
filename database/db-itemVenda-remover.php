@@ -3,7 +3,7 @@
 
 	$id = $_GET['id'];
 
-	$produto = new ProdutoDAO();
+	$produto = new ItemVendaDAO();
 	$produto->remover($id);
 
 

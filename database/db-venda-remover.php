@@ -3,11 +3,12 @@
 
 	$id = $_GET['id'];
 
-	$produto = new ProdutoDAO();
+	$produto = new ItemVendaDAO();
 	$produto->remover($id);
 
 
-	header("Location: ../index.php");
+	header("Location: ../view/relatorio-vendas.php");
+	
 
 
 ?>

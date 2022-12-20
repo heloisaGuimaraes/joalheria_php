@@ -19,7 +19,6 @@ $pathImagem = $_POST['pathImagem'];
 
 
 $produto = new ProdutoDAO();
-$temp_prod = $produto->buscar($id);
 
 $produto -> setId($id);
 $produto -> setNome($nome);
@@ -33,6 +32,7 @@ $produto -> setMedida($medida);
 $produto -> setTipoProduto($tipoProduto);
 $produto -> setPathImagem($pathImagem);
 
+// var_dump($produto);
 $produto->alterar($id);
 
 header("Location: ../view/info-produto.php?id=$id");

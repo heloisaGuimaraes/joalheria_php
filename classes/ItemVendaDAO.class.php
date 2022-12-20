@@ -26,7 +26,8 @@ class ItemVendaDAO extends ItemVenda implements IDatabase {
 		$sql = "SELECT 
 			v.formaPagamento AS forma_pagamento, p.nome AS produto_nome, itsv.*, 
 			FROM vendas AS v, produtos AS p, itens_venda AS itsv
-			WHERE itsv.vendaId = v.id";
+			WHERE itsv.vendaId = v.id
+			ORDER BY id DESC";
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
@@ -48,28 +49,7 @@ class ItemVendaDAO extends ItemVenda implements IDatabase {
 	}
 
 	function alterar($id) {
-		// $sql = "UPDATE usuarios
-        // SET nome = :nome, 
-        // email = :email,
-		// senha = :senha,
-		// cpf = :cpf,
-		// dataNascimento = :dataNascimento,
-		// telefone = :telefone,
-		// endereco = :endereco 
-
-        // WHERE id = :id";
-
-		// $stmt = Conexao::prepare($sql);
-		// $stmt->execute(array(
-		// 	':id' => $id,
-		// 	':nome'=> $this->getNome(),
-        //     ':email'=> $this->getEmail(),
-        //     ':senha'=> $this->getSenha(),
-        //     ':cpf'=> $this->getCpf(),
-        //     ':dataNascimento'=> $this->getDataNascimento(),
-        //     ':telefone'=> $this->getTelefone(),
-        //     ':endereco'=> $this->getEndereco()
-		// 	));
+		
 	}
 
 	function remover($id) {

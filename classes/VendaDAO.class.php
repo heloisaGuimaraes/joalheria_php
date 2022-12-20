@@ -26,7 +26,8 @@ class VendaDAO extends Venda implements IDatabase {
 			u.nome AS usuario_nome, v.*, 
 			date_format(str_to_date(dataVenda, '%Y-%m-%d'), '%d/%m/%Y') AS data
 			FROM vendas AS v, usuarios AS u
-			WHERE v.usuarioId = u.id";
+			WHERE v.usuarioId = u.id
+			ORDER BY id DESC";
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();

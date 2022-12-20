@@ -22,4 +22,6 @@ $venda->adicionar();
 
 
 // header("Location: ../view/listar-proprietarios.php");
+    header("Location: ../view/relatorio-vendas.php");
+
 ?>

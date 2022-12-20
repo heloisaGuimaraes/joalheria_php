@@ -25,7 +25,7 @@ class UsuarioDAO extends Usuario implements IDatabase {
 
 	// date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y')
 	function listar() {
-		$sql = "SELECT *, date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y') AS data FROM usuarios";
+		$sql = "SELECT *, date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y') AS data FROM usuarios ORDER BY id DESC";
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
@@ -70,11 +70,19 @@ class UsuarioDAO extends Usuario implements IDatabase {
 	}
 
 	function remover($id) {
-		// $sql = "DELETE FROM usuarios WHERE id = :id";
+		$sql = "DELETE FROM usuarios WHERE id = :id";
 
-		// $stmt = Conexao::prepare($sql);
-		// $stmt->bindParam(":id", $id);
-		// $stmt->execute();
+		$stmt = Conexao::prepare($sql);
+		$stmt->bindParam(":id", $id);
+		$stmt->execute();
+	}
+	function ultimoUsuario() {
+		$sql = "SELECT MAX(id) FROM usuarios";
+		
+		$stmt = Conexao::prepare($sql);
+		$stmt->execute();
+
+		return $stmt->fetch();
 	}
 	
 }

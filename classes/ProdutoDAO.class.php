@@ -29,7 +29,7 @@ class ProdutoDAO extends Produto implements IDatabase {
 
 	// date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y')
 	function listar() {
-		$sql = "SELECT * FROM produtos";
+		$sql = "SELECT * FROM produtos ORDER BY id DESC";
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();

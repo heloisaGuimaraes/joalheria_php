@@ -6,5 +6,6 @@ require_once '../classes/autoload.inc.php';
 	$usuario = new UsuarioDAO();
 	$usuario->remover($id);
 
-	// header("Location: ../view/listar-proprietarios.php");
+	header("Location: ../view/listar-usuarios.php");
+
 ?>
