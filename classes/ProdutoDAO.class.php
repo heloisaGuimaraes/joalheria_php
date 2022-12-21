@@ -33,6 +33,7 @@ class ProdutoDAO extends Produto implements IDatabase {
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
+		Conexao::close();
 
 		return $stmt->fetchAll();
 	}

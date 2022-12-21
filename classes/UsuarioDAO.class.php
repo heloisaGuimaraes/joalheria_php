@@ -40,6 +40,8 @@ class UsuarioDAO extends Usuario implements IDatabase {
 		$stmt = Conexao::prepare($sql);
 		$stmt->bindParam(":id", $id);
 		$stmt->execute();
+		Conexao::close();
+
 
 		return $stmt->fetch();
 	}

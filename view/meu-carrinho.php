@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+?>
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relatório de Vendas</title>
+  <title>Registrar venda</title>
   <link rel="shortcut icon" href="IMAGENS/icon.ico" type="image/x-icon">
   <!--settings from boostrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -14,10 +19,16 @@
   <!-- <link rel="stylesheet" href="../CSS/stylefromHome.css"> -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
 </head>
 
 
 <body>
+  <?php
+  session_start();
+
+
+  ?>
   <!--Cabeçalho-->
   <header class="menu_superior sticky-top text-white p-2 mb-4">
     <div class="container">
@@ -86,93 +97,184 @@
     </div>
   </header>
 
-  <form class="container pb-4" method="post" action="...." style="background-color: rgba(229, 208, 133, 1);">
+  <form class="container pb-4" method="post" action="../database/db-venda-inserir.php" style="background-color: rgba(229, 208, 133, 1);">
     <div class="d-flex p-2 justify-content-center">
-      <h5>Meu carrinho</h5>
+      <h5>Cadastrar venda</h5>
     </div>
 
     <div class="row row-cols-2 row-cols-lg-2 g-2 g-lg-3">
+
+      <script>
+        function checkAll(value) {
+          var c = document.querySelectorAll("input.op")
+          c.forEach((checkbox) => {
+            checkbox.checked = value
+          })
+
+        }
+
+        function removeAll() {
+          var my_item = []
+          localStorage.meucarrinho = JSON.stringify(my_item)
+
+          document.cookie = "meucarrinho=" + localStorage.meucarrinho;
+          window.location.reload(true)
+
+
+        }
+
+        function removeItem(id) {
+          var my_item = []
+          my_item = JSON.parse(localStorage.getItem('meucarrinho'));
+          my_item.pop(id)
+          localStorage.meucarrinho = JSON.stringify(my_item)
+          // console.log('removeu')
+          document.cookie = "meucarrinho=" + localStorage.meucarrinho;
+          window.location.reload(true)
+        }
+
+        var my_item = []
+        if (localStorage.meucarrinho) {
+          my_item = JSON.parse(localStorage.getItem('meucarrinho'));
+
+        }
+        document.cookie = "meucarrinho=" + my_item;
+        // window.location.reload(true)
+      </script>
+
       <!-- Seu lado esquerdo -->
-        <div class="col">
-         <!-- Checkbox de cada item -->
-          <div class="p-3 mb-1 border bg-light">
-            <div class="form-check">
-              <!-- Input que faz referência a um produto adicionado lado esquerdo -->
-              <input class="form-check-input op" name="item[]" type="checkbox" value="0001" id="flexCheckDefault">
-              <!-- legenda do checkbox -->
-              <label class="form-check-label" for="flexCheckDefault">
-                <p class="text-break ">Selecionar</p>
-              </label>
-              <!-- Item adicionado  -->
-            </div>
-            <!-- inicio do card -->
-            <div class="card mb-1" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src='IMAGENS/icon.png' class="card-img-top" alt='...'>
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text" id="descri">Descrição: </p>
-                    <p class="card-text" id="valor">Preço: </p>
+      <div class="col">
+
+        <?php
+        require_once '../classes/autoload.inc.php';
+        // require_once 'insert.php';
+        $produto = new ProdutoDAO();
+        $usuario = new UsuarioDAO();
+
+
+        $lista = $produto->listar();
+        $usuarios = $usuario->listar();
+
+        $array = $_COOKIE['meucarrinho'];
+
+        $integerIDs = array_map('intval', explode(',', $array));
+        sort($integerIDs);
+        var_dump($integerIDs);
+
+        $total = 0;
+        $itensVenda = [];
+
+        foreach ($lista as $key => $value) {
+          if (in_array($value['id'], $integerIDs)) {
+
+            $count = array_count_values($integerIDs)[$value['id']];
+            $total += ($count * $value['preco']);
+
+            if (!in_array($value['id'], $itensVenda)) {
+              $itensVenda[] = [
+                'produtoId' => $value['id'],
+                'valorTotal' => ((float)$value['preco']) * $count,
+                'quantidade' => $count
+              ];
+            }
+
+
+        ?>
+
+            <div>
+              <div class="p-3 mb-1 border bg-light">
+
+                <div class="card mb-1" style="max-width: 540px;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src='..\imagens_joias/<?php echo $value["pathImagem"]; ?>' class="card-img-top" alt='...'>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" id="descri"><b>Descrição:</b> <?php echo $value["descricao"]; ?></p>
+                        <p class="card-text" id="valor"><b>Preço:</b> <?php echo $value["preco"]; ?></p>
+
+                        <label for="validationDefault05" class="form-label"><b>Quantidade:</b></label>
+                        <input type="text" name="quantidade" class="form-control" pattern="[0-9]" id="validationDefault05" value="<?php echo $count ?>">
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+
+                <a onclick=removeItem(<?php echo $value["id"]; ?>) class="btn meubotao_selecione mb-2 mx-2 text-break" style="background-color: red; color: white;">Remover do carrinho</a>
+
+                <a href="info-produto.php?id=<?php echo $value['id']; ?>" class="btn meubotao_selecione mb-2 text-break">Mais informações</a>
+
               </div>
-            </div>
-            <button class="btn meubotao_selecione mb-2 text-break" type="submit">Comprar Item</button>
 
-            <a href="view/info-produto.php?id=<?php echo $value['id']; ?>" class="btn meubotao_selecione mb-2 mx-2 text-break">Remover do carrinho</a>
-            <a href="view/info-produto.php?id=<?php echo $value['id']; ?>" class="btn meubotao_selecione mb-2 text-break">Mais informações</a>
+            </div>
+        <?php
+          }
+        }
+        ?>
+
+
+      </div>
+      <!-- seu lado direito -->
+      <div class="col">
+        <div class="p-4 border bg-light">
+          <div class="form-check">
+
+            <h5 class="text-brea"><b>Detalhes da compra </h5>
+            <hr class="border border-3 opacity-75">
           </div>
-         
-          
-          <script>
-            
-            function checkAll(value) {
-              
-            var c = document.querySelectorAll("input.op")
-            c.forEach( (checkbox)  => {
-              checkbox.checked = value
-            })
-              
-            }
-            function addCart() {
-            localStorage.setItem("meucarrinho",list.toString())
-            location.href = "index.php"
-            }
 
-          </script>
-          
-          <script>
-            // pega os valores e salva em outro html
-            localStorage.setItem("sacola",list.toString())
-            var l = localStorage.getItem("sacola").split(',')
-          </script>
-         
-        </div>
-        <!-- seu lado direito -->
-        <div class="col">
-          <div class="p-4 border bg-light">
-            <div class="form-check">
-              <input class="form-check-input" onchange="checkAll(this.checked)" name="itensAll" type="checkbox" value="" id="flexcheck">
-              <label class="form-check-label" for="flexcheck">
-                <h5 class="text-break">Selecionar todos os produtos</h5>
-              </label>
-              <hr class="border border-3 opacity-75"> 
+          <div class="container p-2-4-4-4">
+            <label for="validationDefault04" class="form-label">Cliente:</label>
+            <div>
+              <select class="form-select" name="usuarioId" id="validationDefault04" required>
+                <option selected disabled value="">Selecione</option>
+                <?php
+                foreach ($usuarios as $key => $user) {
+                ?>
+                  <option value="<?php echo $user['id']; ?>">
+                    <?php echo $user['cpf'] . ' - ' . $user['nome']; ?>
+                  </option>
+
+                <?php
+                }
+                ?>
+              </select>
             </div>
-            <div class="container p-4">
-              <h5 class="text-brea">Valor total : R$ </h5>
+            <br>
+            <label for="validationDefault04" class="form-label">Forma de pagamento*:</label>
+            <div class="">
+              <select class="form-select" name="formaPagamento" id="validationDefault04" required>
+                <option selected disabled value="">Selecione</option>
+                <option>Pix</option>
+                <option>Em especie</option>
+                <option>Cartão de Débito</option>
+                <option>Cartão de Crédito</option>
+              </select>
             </div>
-            <div class="container p-4">
-              <button class="btn me-4 meubotao_selecione text-break" type="submit">Comprar selecionados</button>
-            </div>
+            <br>
+            <?php
+            echo '<input type="hidden" name="valorTotal" value="' . $total . '">';
+
+            $_SESSION['itensVendidos'] = $itensVenda;
+
+            ?>
+            <h5 class="text-brea"><b>Valor total : R$</b> <?php echo $total ?> </h5>
           </div>
-        </div>
-      </form>        
-    </div>
+          <div class="container p-2">
+            <!-- desabilitar os botoes se a lista de itens esttiver vazia -->
+            <button type="submit" onclick=removeAll() class="btn me-4 meubotao_selecione text-break" style="background-color: green; color: white;" <?php echo empty($itensVenda) ? 'disabled' : '' ?>>Finalizar</button>
 
-<!-- <a href="carrinho.php?acao=add&id.$var['id']" class="btn meubotao_selecione text-break">Adicionar item ao carrinho</a> -->
+  </form>
+  <button class="btn me-4 meubotao_selecione text-break" onclick=removeAll() style="background-color: red; color: white;" <?php echo empty($itensVenda) ? 'disabled' : '' ?>>Remover todos</button>
+  <a href="../index.php" class="btn me-4-4-4-0 meubotao_selecione text-break">Continuar Comprando</a>
+  </div>
+  </div>
+  </div>
+  </div>
+
 
 
 

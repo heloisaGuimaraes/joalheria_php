@@ -82,16 +82,20 @@ error_reporting(E_ALL); ?>
   </header>
 
   <script>
-    function addCart() {
+    function addCart(id) {
       var li = [];
       if (localStorage.meucarrinho) {
         li = JSON.parse(localStorage.getItem('meucarrinho'))
       }
-
-      let novo_item = document.querySelector('.id_do_item').value;
-      li.push(novo_item);
+      li.push(id);
       localStorage.meucarrinho = JSON.stringify(li);
-      location.href = "view/meu-carrinho.php"
+      document.cookie = "meucarrinho=" + JSON.parse(localStorage.meucarrinho);
+      
+      window.location.replace ("view/meu-carrinho.php");
+      
+
+
+
     }
   </script>
 
@@ -117,10 +121,7 @@ error_reporting(E_ALL); ?>
                 <p class="card-title" id="descricao"><?php echo mb_strimwidth($value["descricao"], 0, 20, "..."); ?></p>
                 <p class="card-text" id="valor"> R$ <?php echo $value['preco']; ?></p>
 
-
-                <!-- <a onclick="addCart()" class="btn meubotao_selecione mb-2">Adicionar ao carrinho</a> -->
-                <div hidden class="id_do_item"><?php echo $value["id"]; ?></div>
-                <a class="btn meubotao_selecione mb-2" onclick=addCart()>Adcionar ao carrinho</a>
+                <a class="btn meubotao_selecione mb-2" onclick=addCart(<?php echo $value["id"]; ?>)>Adicionar ao carrinho</a>
                 <a href="view/info-produto.php?id=<?php echo $value['id']; ?>" class="btn meubotao_selecione mb-2">Mais informações</a>
               </div>
             </div>

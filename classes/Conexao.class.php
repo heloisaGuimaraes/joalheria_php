@@ -19,4 +19,8 @@ class Conexao {
 	public static function prepare($sql) {
 		return self::getConexao()->prepare($sql);
 	}
+
+	public static function close() {
+		return self::$conexao = null;
+	}
 }

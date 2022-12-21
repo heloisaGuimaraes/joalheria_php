@@ -18,6 +18,8 @@ class VendaDAO extends Venda implements IDatabase {
             ':formaPagamento'=> $this->getFormaPagamento(),
             ':usuarioId'=> $this->getUsuarioId(),
 			));
+			Conexao::close();
+		
 	}
 
 	// date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y')
@@ -31,6 +33,8 @@ class VendaDAO extends Venda implements IDatabase {
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
+		Conexao::close();
+
 
 		return $stmt->fetchAll();
 	}
@@ -46,42 +50,27 @@ class VendaDAO extends Venda implements IDatabase {
 		$stmt = Conexao::prepare($sql);
 		$stmt->bindParam(":id", $id);
 		$stmt->execute();
+		Conexao::close();
+
 
 		return $stmt->fetch();
 	}
 
 	function alterar($id) {
-		// $sql = "UPDATE usuarios
-        // SET nome = :nome, 
-        // email = :email,
-		// senha = :senha,
-		// cpf = :cpf,
-		// dataNascimento = :dataNascimento,
-		// telefone = :telefone,
-		// endereco = :endereco 
-
-        // WHERE id = :id";
-
-		// $stmt = Conexao::prepare($sql);
-		// $stmt->execute(array(
-		// 	':id' => $id,
-		// 	':nome'=> $this->getNome(),
-        //     ':email'=> $this->getEmail(),
-        //     ':senha'=> $this->getSenha(),
-        //     ':cpf'=> $this->getCpf(),
-        //     ':dataNascimento'=> $this->getDataNascimento(),
-        //     ':telefone'=> $this->getTelefone(),
-        //     ':endereco'=> $this->getEndereco()
-		// 	));
+		
 	}
 
 	function remover($id) {
-		// $sql = "DELETE FROM usuarios WHERE id = :id";
+		
+	}
+	function ultimaVenda() {
+		$sql = "SELECT MAX(id) FROM vendas";
+		
+		$stmt = Conexao::prepare($sql);
+		$stmt->execute();
+		Conexao::close();
 
-		// $stmt = Conexao::prepare($sql);
-		// $stmt->bindParam(":id", $id);
-		// $stmt->execute();
+		return $stmt->fetch();
 	}
 	
 }
-?>

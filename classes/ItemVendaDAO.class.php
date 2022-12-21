@@ -19,6 +19,8 @@ class ItemVendaDAO extends ItemVenda implements IDatabase {
             ':produtoId'=>$this->getProdutoId(), 
             ':vendaId' => $this->getVendaId()
 			));
+		Conexao::close();
+
 	}
 
 	// date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y')
@@ -31,6 +33,8 @@ class ItemVendaDAO extends ItemVenda implements IDatabase {
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
+		Conexao::close();
+
 
 		return $stmt->fetchAll();
 	}
@@ -61,4 +65,3 @@ class ItemVendaDAO extends ItemVenda implements IDatabase {
 	}
 	
 }
-?>
