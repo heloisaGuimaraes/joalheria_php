@@ -44,6 +44,7 @@ for($i = 0; $i < $max;$i++)
     $itemVenda->adicionar();
 }
 
+
     header("Location: ../view/relatorio-vendas.php");
 
 ?>

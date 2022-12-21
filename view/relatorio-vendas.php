@@ -87,8 +87,15 @@ error_reporting(E_ALL); ?>
       </div>
     </div>
   </header>
-  <!-- codigo para apresentar um relatorio de quantiadades -->
- 
+
+  <script>
+    var my_item = []
+    localStorage.meucarrinho = JSON.stringify(my_item)
+
+    document.cookie = "meucarrinho=" + localStorage.meucarrinho;
+    // window.location.reload(true)
+  </script>
+
 
 
   <div class="container pb-4" style="background-color: rgba(229, 208, 133, 1);">
@@ -97,41 +104,41 @@ error_reporting(E_ALL); ?>
     </div>
 
     <?php
-      require_once '../classes/autoload.inc.php';
+    require_once '../classes/autoload.inc.php';
 
-      $venda = new VendaDAO();
-      $lista = $venda->listar();
-      $quantidadeVendas = count($lista);
-      
-      $usuario = new UsuarioDAO();
-      $listaUsuario = $usuario->listar();
-      $quatidadeUsuario = count($listaUsuario);    
+    $venda = new VendaDAO();
+    $lista = $venda->listar();
+    $quantidadeVendas = count($lista);
 
-      $itensVendidos= new ItemVendaDAO();
-      $listaItensVendidos = $itensVendidos->listar();
-      $quantidadeItensVendidos = count($listaItensVendidos);
-      
-      ?>
+    $usuario = new UsuarioDAO();
+    $listaUsuario = $usuario->listar();
+    $quatidadeUsuario = count($listaUsuario);
+
+    $itensVendidos = new ItemVendaDAO();
+    $listaItensVendidos = $itensVendidos->listar();
+    $quantidadeItensVendidos = count($listaItensVendidos);
+
+    ?>
 
     <div class="row row-cols-2  row-cols-lg-2  g-2 g-lg-3 justify-content-center">
 
-    <table >
-      <tr>
-        <th>Usuarios Cadastrados</th>
-        <th>Vendas realizadas</th>
-        <th>Itens vendidos</th>
-      </tr>
-      <tr>
-        <td><?php echo $quatidadeUsuario ?></td>
-        <td><?php echo $quantidadeVendas ?></td>
-        <td><?php echo $quantidadeItensVendidos ?></td>
+      <table>
+        <tr>
+          <th>Usuarios Cadastrados</th>
+          <th>Vendas realizadas</th>
+          <th>Itens vendidos</th>
+        </tr>
+        <tr>
+          <td><?php echo $quatidadeUsuario ?></td>
+          <td><?php echo $quantidadeVendas ?></td>
+          <td><?php echo $quantidadeItensVendidos ?></td>
 
-        
-      </tr>
-      
-    </table>
-  </div>
-<br>
+
+        </tr>
+
+      </table>
+    </div>
+    <br>
 
     <div class="row row-cols-2 row-cols-lg-2 g-2 g-lg-3">
       <?php

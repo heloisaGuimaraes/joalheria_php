@@ -21,6 +21,8 @@ class UsuarioDAO extends Usuario implements IDatabase {
             ':telefone'=> $this->getTelefone(),
             ':endereco'=> $this->getEndereco()
 			));
+		Conexao::close();
+
 	}
 
 	// date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y')
@@ -85,6 +87,8 @@ class UsuarioDAO extends Usuario implements IDatabase {
 		
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
+		Conexao::close();
+
 
 		return $stmt->fetch();
 	}

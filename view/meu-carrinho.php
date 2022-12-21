@@ -159,7 +159,7 @@ error_reporting(E_ALL);
 
         $integerIDs = array_map('intval', explode(',', $array));
         sort($integerIDs);
-        var_dump($integerIDs);
+        // var_dump($integerIDs);
 
         $total = 0;
         $itensVenda = [];
@@ -265,9 +265,12 @@ error_reporting(E_ALL);
           </div>
           <div class="container p-2">
             <!-- desabilitar os botoes se a lista de itens esttiver vazia -->
-            <button type="submit" onclick=removeAll() class="btn me-4 meubotao_selecione text-break" style="background-color: green; color: white;" <?php echo empty($itensVenda) ? 'disabled' : '' ?>>Finalizar</button>
+            <button type="submit" name="submit" class="btn me-4 meubotao_selecione text-break" style="background-color: green; color: white;" <?php echo empty($itensVenda) ? 'disabled' : '' ?>>Finalizar</button>
 
   </form>
+
+
+  
   <button class="btn me-4 meubotao_selecione text-break" onclick=removeAll() style="background-color: red; color: white;" <?php echo empty($itensVenda) ? 'disabled' : '' ?>>Remover todos</button>
   <a href="../index.php" class="btn me-4-4-4-0 meubotao_selecione text-break">Continuar Comprando</a>
   </div>

@@ -62,6 +62,7 @@
                     </button>
 
                     <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="meubutton btn" href="meu-carrinho.php">Cadastrar Venda</a></li>
                         <li><a class="meubutton btn" href="cadastrar-produto.php">Cadastrar Produto</a></li>
                     </ul>
                 </div>

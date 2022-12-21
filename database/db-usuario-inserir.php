@@ -32,6 +32,6 @@
     $usuario->setEndereco($endereco);
 
     $usuario->adicionar();
+    $usuarioId = $usuario->ultimoUsuario();
 
-    header("Location: ../view/listar-usuarios.php");
-?>
+    header("Location: ../view/info-usuario.php?id=$usuarioId[0]");
