@@ -29,6 +29,8 @@ class UsuarioDAO extends Usuario implements IDatabase {
 
 		$stmt = Conexao::prepare($sql);
 		$stmt->execute();
+		Conexao::close();
+
 
 		return $stmt->fetchAll();
 	}

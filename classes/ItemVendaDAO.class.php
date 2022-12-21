@@ -26,9 +26,8 @@ class ItemVendaDAO extends ItemVenda implements IDatabase {
 	// date_format(str_to_date(dataNascimento, '%Y-%m-%d'), '%d/%m/%Y')
 	function listar() {
 		$sql = "SELECT 
-			v.formaPagamento AS forma_pagamento, p.nome AS produto_nome, itsv.*, 
-			FROM vendas AS v, produtos AS p, itens_venda AS itsv
-			WHERE itsv.vendaId = v.id
+			itsv.* 
+			FROM itens_venda AS itsv
 			ORDER BY id DESC";
 
 		$stmt = Conexao::prepare($sql);

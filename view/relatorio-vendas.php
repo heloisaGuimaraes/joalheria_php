@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL); ?>
 
 <head>
   <meta charset="UTF-8">
@@ -76,24 +80,65 @@
           </button>
 
           <ul class="menu_susp dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="meubutton btn" href="meu-carrinho.php">Cadastrar Venda</a></li>
             <li><a class="meubutton btn" href="relatorio-vendas.php">Relatório de Vendas</a></li>
           </ul>
         </div>
       </div>
     </div>
   </header>
+  <!-- codigo para apresentar um relatorio de quantiadades -->
+ 
+
 
   <div class="container pb-4" style="background-color: rgba(229, 208, 133, 1);">
     <div class="d-flex p-2 justify-content-center">
       <h5>Relatório de Vendas</h5>
     </div>
 
-    <div class="row row-cols-2 row-cols-lg-2 g-2 g-lg-3">
-      <?php
+    <?php
       require_once '../classes/autoload.inc.php';
 
       $venda = new VendaDAO();
       $lista = $venda->listar();
+      $quantidadeVendas = count($lista);
+      
+      $usuario = new UsuarioDAO();
+      $listaUsuario = $usuario->listar();
+      $quatidadeUsuario = count($listaUsuario);    
+
+      $itensVendidos= new ItemVendaDAO();
+      $listaItensVendidos = $itensVendidos->listar();
+      $quantidadeItensVendidos = count($listaItensVendidos);
+      
+      ?>
+
+    <div class="row row-cols-2  row-cols-lg-2  g-2 g-lg-3 justify-content-center">
+
+    <table >
+      <tr>
+        <th>Usuarios Cadastrados</th>
+        <th>Vendas realizadas</th>
+        <th>Itens vendidos</th>
+      </tr>
+      <tr>
+        <td><?php echo $quatidadeUsuario ?></td>
+        <td><?php echo $quantidadeVendas ?></td>
+        <td><?php echo $quantidadeItensVendidos ?></td>
+
+        
+      </tr>
+      
+    </table>
+  </div>
+<br>
+
+    <div class="row row-cols-2 row-cols-lg-2 g-2 g-lg-3">
+      <?php
+      // require_once '../classes/autoload.inc.php';
+
+      // $venda = new VendaDAO();
+      // $lista = $venda->listar();
 
       foreach ($lista as $key => $value) {
 
